@@ -3,6 +3,7 @@
 #pragma hdrstop
 #include "Unit1.h"
 #include "Unit2.h"
+#include <Vcl.Clipbrd.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "cspin"
@@ -17,7 +18,8 @@ __fastcall TmainForm::TmainForm(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void abrirDB(){
+void abrirDB()
+{
 	DB->conexion->Params->Values["Database"] = ExtractFilePath(Application->ExeName) + "\Security.dll";
 	DB->conexion->Params->Values["Password"] = "b_NjwOi@";
 
@@ -27,7 +29,8 @@ void abrirDB(){
 	DB->queryUser->Open();
 }
 //---------------------------------------------------------------------------
-String CrearContrasena(int longitud) {
+String CrearContrasena(int longitud)
+{
     String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%{}_-[]";
 	String resultado = "";
 
@@ -43,8 +46,6 @@ void __fastcall TmainForm::makePassClick(TObject *Sender)
 {
 	DB->DAO_Datos->Edit();
 	inputPass->Text = CrearContrasena(spinFuerza->Value);
-	DB->queryDatos->Post();
-
 }
 //---------------------------------------------------------------------------
 
@@ -87,7 +88,6 @@ void __fastcall TmainForm::btnLoginClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TmainForm::btnChangeClick(TObject *Sender)
 {
 
@@ -129,4 +129,10 @@ void __fastcall TmainForm::pageControlChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TmainForm::btnCopyClick(TObject *Sender)
+{
+	Clipboard()->AsText = inputPass->Text;
+}
+//---------------------------------------------------------------------------
 

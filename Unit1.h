@@ -46,12 +46,14 @@ __published:	// IDE-managed Components
 	TLabel *lblFuerza;
 	TDBEdit *editPass;
 	TLabel *lblIngrese;
+	TBitBtn *btnCopy;
 	void __fastcall makePassClick(TObject *Sender);
 	void __fastcall inputURLClick(TObject *Sender);
 	void __fastcall btnLoginClick(TObject *Sender);
 	void __fastcall btnChangeClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall pageControlChange(TObject *Sender);
+	void __fastcall btnCopyClick(TObject *Sender);
 
 
 private:	// User declarations
