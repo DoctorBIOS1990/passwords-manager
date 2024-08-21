@@ -5,4 +5,4 @@ Key: default</br>
 
 <strong>Developed in C++ Builder RAD Studio 11.2</strong></br>
 
-<img src="https://github.com/DoctorBIOS1990/passwords-notepad/blob/main/Screenshoot/ScreenShot.png">
+<img src="https://github.com/DoctorBIOS1990/passwords-manager/blob/main/Screenshoot/ScreenShot.png">
