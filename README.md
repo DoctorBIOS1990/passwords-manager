@@ -1,4 +1,4 @@
-# :police_officer: Passwords Notepad
+# :police_officer: Passwords Manager
 
 Sometimes we forget our important account passwords, this is a small solution to manage them.</br>
 Key: default</br>
