@@ -6,4 +6,6 @@ Sometimes we forget our important account passwords, this is a small solution to
 > :key: Password:  default
 
 # :camera_flash: Screenshot
-<img src="https://github.com/DoctorBIOS1990/passwords-manager/blob/main/Screenshoot/ScreenShot.png">
+<div align="center">
+  <img src="https://github.com/DoctorBIOS1990/passwords-manager/blob/main/Screenshoot/ScreenShot.png">
+</div>
