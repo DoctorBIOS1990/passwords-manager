@@ -42,13 +42,29 @@ String CrearContrasena(int longitud)
     return resultado;
 }
 
-void __fastcall TmainForm::makePassClick(TObject *Sender)
+//---------------------------------------------------------------------------
+void generateKey()
 {
 	DB->DAO_Datos->Edit();
-	inputPass->Text = CrearContrasena(spinFuerza->Value);
+	mainForm->inputPass->Text = CrearContrasena(mainForm->spinFuerza->Value);
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
+void __fastcall TmainForm::makePassClick(TObject *Sender)
+{
+
+	if (inputPass->Text == "") {
+		generateKey();
+	}else {
+		if (Application->MessageBox(L"Se va a cambiar la clave.\n¿Estás seguro/a?.",
+		L"Advertencia", MB_OKCANCEL | MB_ICONWARNING) == 1){
+			mainForm->inputPass->Clear();
+			generateKey();
+		}
+	}
+}
+
+//---------------------------------------------------------------------------
 void __fastcall TmainForm::inputURLClick(TObject *Sender)
 {
 	inputURL->Clear();
@@ -65,7 +81,7 @@ void __fastcall TmainForm::btnLoginClick(TObject *Sender)
 				{
 					pageControl->Pages[1]->TabVisible  = True;
 					pageControl->Pages[2]->TabVisible  = True;
-                    mainForm->Height = 500;
+					mainForm->Height = 500;
 					inputLogin->Clear();
 					pageControl->TabIndex = 1;
 					estado = true;
@@ -100,12 +116,12 @@ String clave = DB->queryPass->FieldByName("password")->AsString;
 					DB->DAO_Pass->Edit();
 					editPass->Text = confirmPass->Text;
 					DB->queryPass->Post();
-					Application->MessageBox(TEXT("Se ha cambiado con EXITO."),TEXT("Notificación"), MB_OK | MB_ICONINFORMATION);
+					Application->MessageBox(L"Se ha cambiado con EXITO.",L"Notificación", MB_OK | MB_ICONINFORMATION);
                     oldPass->Clear();
 				}
-			else Application->MessageBox(TEXT("Se ha ESQUIVOCADO en la contraseña."),TEXT("ERROR"), MB_OK | MB_ICONERROR);
+			else Application->MessageBox(L"Se ha ESQUIVOCADO en la contraseña.",L"ERROR", MB_OK | MB_ICONERROR);
 		}
-	else Application->MessageBox(TEXT("La contraseña antigua es INCORRECTA."),TEXT("ERROR"), MB_OK | MB_ICONERROR);
+	else Application->MessageBox(L"La contraseña antigua es INCORRECTA.",L"ERROR", MB_OK | MB_ICONERROR);
 }
 //---------------------------------------------------------------------------
 
@@ -114,9 +130,9 @@ void __fastcall TmainForm::FormShow(TObject *Sender)
 	try{
 		abrirDB();
 	}
-	catch(Exception  &Exception){
-			ShowMessage("ERROR de Base de Datos.");
-			Application->Terminate();
+	catch(Exception &Exception){
+		Application->MessageBox(L"ERROR de Base de Datos.",L"Ha ocurrido un error", MB_OK | MB_ICONERROR);
+		Application->Terminate();
 	}
 }
 //---------------------------------------------------------------------------
@@ -133,6 +149,12 @@ void __fastcall TmainForm::pageControlChange(TObject *Sender)
 void __fastcall TmainForm::btnCopyClick(TObject *Sender)
 {
 	Clipboard()->AsText = inputPass->Text;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TmainForm::btnCopyUrlClick(TObject *Sender)
+{
+	Clipboard()->AsText = inputURL->Text;
 }
 //---------------------------------------------------------------------------
 
