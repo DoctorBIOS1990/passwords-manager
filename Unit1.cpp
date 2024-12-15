@@ -3,6 +3,7 @@
 #pragma hdrstop
 #include "Unit1.h"
 #include "Unit2.h"
+#include <Windows.h>
 #include <Vcl.Clipbrd.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -56,7 +57,7 @@ void __fastcall TmainForm::makePassClick(TObject *Sender)
 	if (inputPass->Text == "") {
 		generateKey();
 	}else {
-		if (Application->MessageBox(L"Se va a cambiar la clave.\n¿Estás seguro/a?.",
+		if (Application->MessageBox(L"Se va a cambiar la clave.\n\n¿Estás de acuerdo?",
 		L"Advertencia", MB_OKCANCEL | MB_ICONWARNING) == 1){
 			mainForm->inputPass->Clear();
 			generateKey();
@@ -117,9 +118,9 @@ String clave = DB->queryPass->FieldByName("password")->AsString;
 					editPass->Text = confirmPass->Text;
 					DB->queryPass->Post();
 					Application->MessageBox(L"Se ha cambiado con EXITO.",L"Notificación", MB_OK | MB_ICONINFORMATION);
-                    oldPass->Clear();
+					oldPass->Clear();
 				}
-			else Application->MessageBox(L"Se ha ESQUIVOCADO en la contraseña.",L"ERROR", MB_OK | MB_ICONERROR);
+			else Application->MessageBox(L"Se ha EQUIVOCADO en la contraseña.",L"ERROR", MB_OK | MB_ICONERROR);
 		}
 	else Application->MessageBox(L"La contraseña antigua es INCORRECTA.",L"ERROR", MB_OK | MB_ICONERROR);
 }
@@ -155,6 +156,13 @@ void __fastcall TmainForm::btnCopyClick(TObject *Sender)
 void __fastcall TmainForm::btnCopyUrlClick(TObject *Sender)
 {
 	Clipboard()->AsText = inputURL->Text;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TmainForm::Image3Click(TObject *Sender)
+{
+    ShellExecute(mainForm->Handle, TEXT("open"),
+        TEXT("https://github.com/DoctorBIOS1990"), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 

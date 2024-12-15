@@ -48,6 +48,7 @@ __published:	// IDE-managed Components
 	TLabel *lblIngrese;
 	TBitBtn *btnCopy;
 	TBitBtn *btnCopyUrl;
+	TImage *Image3;
 	void __fastcall makePassClick(TObject *Sender);
 	void __fastcall inputURLClick(TObject *Sender);
 	void __fastcall btnLoginClick(TObject *Sender);
@@ -56,6 +57,7 @@ __published:	// IDE-managed Components
 	void __fastcall pageControlChange(TObject *Sender);
 	void __fastcall btnCopyClick(TObject *Sender);
 	void __fastcall btnCopyUrlClick(TObject *Sender);
+	void __fastcall Image3Click(TObject *Sender);
 
 
 private:	// User declarations
