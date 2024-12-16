@@ -1,9 +1,7 @@
 # :police_officer: Passwords Manager
 
 Sometimes we forget our important account passwords, this is a small solution to manage them.</br>
-
-> [!IMPORTANT]
-> :key: Password:  default
+> Developed IN C++ Builder 11.2
 
 # :camera_flash: Screenshot
 <div align="center">
